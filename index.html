@@ -19,7 +19,7 @@
         AnswerCheck
       </div>
       <h1>Is the AI telling shoppers <em>the truth</em> about this product?</h1>
-      <p class="lede">AI shopping assistants answer questions about a product in their own words. AnswerCheck breaks each answer into claims, checks every claim against the product's own listing, specs and reviews, and shows the seller what's wrong, with the evidence to fix it.</p>
+      <p class="lede">AI shopping assistants answer questions about a product in their own words. AnswerCheck checks claims it recognizes against the product information you provide, then highlights possible mismatches with supporting excerpts.</p>
     </div>
     <div class="byline">
       <span>Concept prototype by <strong>Sravani Elavarthi</strong></span>
@@ -70,8 +70,8 @@
       <div class="qa" id="qa"></div>
 
       <section class="panel case" aria-labelledby="hCase">
-        <div class="panel-head"><h2 id="hCase">Seller report, ready to send</h2><span class="eyebrow">Auto-drafted</span></div>
-        <p class="note">Amazon already tells sellers to flag wrong AI answers with thumbs-down and a Seller Support case. AnswerCheck finds the problems before a shopper does, then drafts that case with the evidence attached.</p>
+        <div class="panel-head"><h2 id="hCase">Draft seller report</h2><span class="eyebrow">Auto-drafted</span></div>
+        <p class="note">Amazon already tells sellers to flag wrong AI answers with thumbs-down and a Seller Support case. AnswerCheck drafts a case from its flagged claims. Review the answers and add the product details and screenshots before reporting a real issue.</p>
         <pre id="caseText"></pre>
         <div class="row"><button class="secondary" type="button" id="copyCase">Copy report</button><span class="note" id="copyMsg" role="status"></span></div>
       </section>
@@ -82,7 +82,7 @@
     <section class="panel" aria-labelledby="hWhy">
       <h2 id="hWhy">Why this matters</h2>
       <div class="facts">
-        <div class="fact"><span class="big">300M+</span><p>customers had used Rufus, Amazon's AI shopping assistant, before it became Alexa for Shopping on May 13, 2026. It's now the default for signed-in US shoppers.</p><a href="https://canopymanagement.com/amazon-alexa-for-shopping-sellers-guide/" target="_blank" rel="noopener">Canopy Management, 2026</a></div>
+        <div class="fact"><span class="big">300M+</span><p>customers used Rufus in 2025, according to Amazon. It became Alexa for Shopping on May 13, 2026 and is available to signed-in US customers.</p><a href="https://www.aboutamazon.com/news/retail/alexa-for-shopping-ai-assistant" target="_blank" rel="noopener">Amazon, 2026</a></div>
         <div class="fact"><span class="big">1 word</span><p>A coffee seller found the assistant listing “bitterness” as a positive attribute of their product, though bitterness was hardly ever mentioned in their reviews. A moderator escalated it by hand.</p><a href="https://sellercentral.amazon.com/seller-forums/discussions/t/7b947c81-e7ee-43dc-a024-a84e83458baa" target="_blank" rel="noopener">Amazon Seller Forums</a></div>
         <div class="fact"><span class="big">No view</span><p>Seller guides report there is no dedicated Seller Central dashboard yet showing what the assistant says about a product. Sellers test it by hand, one question at a time.</p><a href="https://perpetua.io/blog-alexa-for-shopping-amazon-rufus-the-complete-guide-for-brands-and-sellers/" target="_blank" rel="noopener">Perpetua, 2026</a></div>
         <div class="fact"><span class="big">24%</span><p>of consumers surveyed said they doubt AI shopping assistants' recommendation accuracy.</p><a href="https://www.thestreet.com/personal-finance/amazons-rufus-other-ai-shopping-assistants-face-consumers-concerns" target="_blank" rel="noopener">TheStreet, citing YouGov</a></div>
@@ -93,7 +93,7 @@
       <ol class="steps">
         <li><b>Sample the questions shoppers actually ask</b> about each product, and record the assistant's answers.</li>
         <li><b>Split each answer into single claims</b> with a language model. This prototype uses rules so it runs in any browser.</li>
-        <li><b>Check every claim against retrieved evidence</b> (listing, specs, reviews) with an entailment model, tuned on a human-labeled set so “contradicted” means contradicted.</li>
+        <li><b>Check extracted claims against retrieved evidence</b> (listing, specs, reviews) with an entailment model, tuned on a human-labeled set so “contradicted” means contradicted.</li>
         <li><b>Show sellers a per-product accuracy view</b> in Seller Central, with the evidence and a one-click report.</li>
         <li><b>Feed contradictions back</b> so the assistant cites evidence or says “the listing doesn't say” instead of guessing.</li>
       </ol>
