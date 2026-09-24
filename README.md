@@ -2,7 +2,7 @@
 
 **When an AI tells a shopper something about a product, is it true?**
 
-AnswerCheck reads an AI shopping assistant's answers, splits them into single claims, and checks each claim against the product's own listing, specs and reviews. It shows the seller every wrong answer, the evidence that proves it, and a report ready to send.
+AnswerCheck is a browser prototype. Paste a product listing, specs, reviews and AI shopping answers, and it checks recognizable claims against the supplied product information. It highlights possible contradictions with supporting excerpts and drafts a report for a person to review.
 
 **Try it live → https://sravani150602.github.io/answercheck/**
 
@@ -12,15 +12,15 @@ AnswerCheck reads an AI shopping assistant's answers, splits them into single cl
 
 ## The customer problem
 
-A shopper asks, *"Can this pan go in the oven?"* The assistant answers, *"Yes, it's oven safe up to 500°F."* The listing says 400°F. The shopper believes the answer, because there is no reason not to. The pan warps, and the shopper returns it and loses some trust in the assistant.
+A shopper asks, *"Can this pan go in the oven?"* The assistant answers, *"Yes, it's oven safe up to 500°F."* The listing says 400°F. That mismatch could lead the shopper to use the pan above its stated limit. This is an illustrative scenario, not a measured return.
 
-This matters because shoppers now ask before they read. More than 300 million customers had used Rufus before it became **Alexa for Shopping** on May 13, 2026, and it's now the default for signed-in US shoppers. The listing can be accurate while the answer isn't. A coffee seller found the assistant listing "bitterness" as a positive attribute of their coffee, though bitterness was hardly ever mentioned in their reviews. It took a forum post and a moderator to escalate it.
+This matters because shoppers now ask before they read. Amazon says more than 300 million customers used Rufus in 2025. On May 13, 2026, it became **Alexa for Shopping**, which is available to signed-in US customers. The listing can be accurate while the answer isn't. A coffee seller found the assistant listing "bitterness" as a positive attribute of their coffee, though bitterness was hardly ever mentioned in their reviews. It took a forum post and a moderator to escalate it.
 
 Today a seller finds mistakes like that by asking the assistant questions one at a time, spotting a wrong answer by chance, and filing a thumbs-down and a Seller Support case. Seller guides say there is no dedicated dashboard yet that shows what the assistant says about a product. That is manual and reactive, and it doesn't scale to a catalog.
 
 ## What AnswerCheck does
 
-It checks every claim in every answer, and gives each one a label:
+The prototype checks claims it recognizes, such as features, categories, numbers and descriptions of reviews. It gives those claims a label:
 
 | Label | Meaning |
 |---|---|
@@ -37,7 +37,7 @@ It checks every claim in every answer, and gives each one a label:
 
 ![Claim checks for a coffee answer](docs/screenshots/claim-checks.jpg)
 
-**A report the seller can send today,** in the shape a Seller Support case needs:
+**A draft for the seller to review,** with flagged statements and evidence:
 
 ![Auto-drafted seller report](docs/screenshots/seller-report.jpg)
 
@@ -45,13 +45,13 @@ On the live page, you can hover over any check to highlight the listing line, sp
 
 ## Why it matters
 
-- **Shoppers** get answers they can trust, and fewer surprises when the box arrives.
-- **Sellers** see what the AI says about their products in one view, instead of asking it one question at a time.
-- **Amazon** gets fewer returns and bad reviews caused by wrong answers. It also protects the thing that makes an assistant worth asking: shoppers believing it.
+- **Shoppers:** a future version could make product answers easier to verify.
+- **Sellers:** paste answers they have collected to inspect possible mismatches in one view.
+- **Amazon:** a real pilot could test whether correcting mismatches improves answer accuracy or reduces returns.
 
 ## How it works
 
-The prototype runs entirely in the browser, with no API key and no data sent anywhere. `js/engine.js` runs four kinds of checks on each sentence of an answer:
+The checks run in the browser, without an API key or a backend receiving pasted data. `js/engine.js` runs four kinds of checks on each sentence of an answer:
 
 | Check | Example | How it decides |
 |---|---|---|
@@ -70,9 +70,9 @@ The prototype runs entirely in the browser, with no API key and no data sent any
 
 ## What I don't know yet
 
-- The demo uses **fictional products and simulated answers**. I have not yet measured how often real answers are wrong.
+- The demo uses **fictional products and simulated answers**. It does not fetch Alexa for Shopping answers or measure how often real answers are wrong.
 - Amazon very likely measures answer quality internally. AnswerCheck's contribution is giving **sellers** that view, with the evidence attached.
-- The prototype's rules cover common product facts. A production version needs a learned model to handle everything shoppers ask.
+- The prototype's rules cover selected product facts. Some statements will have no checkable claims, and every flag needs human review. A production version would need broader coverage and validation.
 
 The next step I'd take: run this on 100 real products across 5 categories, measure the contradiction rate, and bring the numbers.
 
@@ -97,7 +97,8 @@ docs/screenshots/   images in this README
 
 ## Sources
 
-- [Canopy Management: Alexa for Shopping replaces Rufus (2026)](https://canopymanagement.com/amazon-alexa-for-shopping-sellers-guide/)
+- [Amazon: Alexa for Shopping and Rufus usage (2026)](https://www.aboutamazon.com/news/retail/alexa-for-shopping-ai-assistant)
+- [Canopy Management: Alexa for Shopping seller guide (2026)](https://canopymanagement.com/amazon-alexa-for-shopping-sellers-guide/)
 - [Amazon Seller Forums: the "bitterness" case](https://sellercentral.amazon.com/seller-forums/discussions/t/7b947c81-e7ee-43dc-a024-a84e83458baa)
 - [Amazon Seller Forums: reporting wrong answers with thumbs-down and Seller Support](https://sellercentral.amazon.com/seller-forums/discussions/t/38a7533e-d7d7-464c-9680-0e8e3f2a37a8)
 - [Perpetua: no dedicated seller dashboard for Alexa for Shopping (2026)](https://perpetua.io/blog-alexa-for-shopping-amazon-rufus-the-complete-guide-for-brands-and-sellers/)
