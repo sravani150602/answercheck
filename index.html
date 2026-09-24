@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="AnswerCheck checks an AI shopping assistant's answers against a product's own listing, specs and reviews, and flags claims the evidence contradicts.">
+<title>AnswerCheck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="logo">
+        <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><path d="M3 5h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H9l-4 4v-4H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="19" cy="17" r="6" fill="var(--bg)" stroke="var(--accent)" stroke-width="2"/><path d="M16.3 17.2l1.8 1.8 3.4-3.6" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        AnswerCheck
+      </div>
+      <h1>Is the AI telling shoppers <em>the truth</em> about this product?</h1>
+      <p class="lede">AI shopping assistants answer questions about a product in their own words. AnswerCheck breaks each answer into claims, checks every claim against the product's own listing, specs and reviews, and shows the seller what's wrong, with the evidence to fix it.</p>
+    </div>
+    <div class="byline">
+      <span>Concept prototype by <strong>Sravani Elavarthi</strong></span>
+      <span>Independent work. Not affiliated with Amazon.</span>
+    </div>
+  </header>
+
+  <div class="picker" role="group" aria-label="Choose a product">
+    <span class="eyebrow">Example products</span>
+    <span id="sampleBtns" style="display:contents"></span>
+    <button class="chip-btn" id="btnOwn" type="button" aria-pressed="false">Check your own</button>
+  </div>
+
+  <form class="editor" id="editor" hidden>
+    <label for="inListing">Listing: title on the first line, then one bullet per line
+      <textarea id="inListing" spellcheck="false"></textarea></label>
+    <label for="inSpecs">Specs: one “Name: value” per line
+      <textarea id="inSpecs" spellcheck="false"></textarea></label>
+    <label for="inReviews">Reviews: one per line <span class="hint">(optional star rating first, like “4 | Great pan”)</span>
+      <textarea id="inReviews" spellcheck="false"></textarea></label>
+    <label for="inQA">AI answers to check <span class="hint">(“Q:” line, then “A:” line; paste real assistant answers here)</span>
+      <textarea id="inQA" spellcheck="false"></textarea></label>
+    <div class="row">
+      <button class="primary" type="submit">Check answers</button>
+      <span class="note" id="editorMsg">Runs in your browser. Nothing you paste is sent anywhere.</span>
+    </div>
+  </form>
+
+  <div class="summary" id="summary"></div>
+
+  <div class="grid">
+    <aside class="col">
+      <section class="panel evidence" aria-labelledby="hEv">
+        <div class="panel-head"><h2 id="hEv">What the product page says</h2></div>
+        <div><div class="pdp-title" id="pdpTitle"></div><div class="pdp-cat" id="pdpCat"></div></div>
+        <div class="ev-group"><span class="eyebrow">Listing</span><ul class="ev-list" id="evListing"></ul></div>
+        <div class="ev-group"><span class="eyebrow">Specs</span><ul class="ev-list specs" id="evSpecs"></ul></div>
+        <div class="ev-group"><span class="eyebrow" id="revHead">Reviews</span><ul class="ev-list" id="evReviews"></ul></div>
+      </section>
+    </aside>
+
+    <div class="col">
+      <div class="panel-head">
+        <h2 style="font-size:19px">What the AI told shoppers</h2>
+        <div class="legend"><span class="pill contradicted">Contradicted</span><span class="pill mixed">Mixed</span><span class="pill missing">Not on the page</span><span class="pill supported">Supported</span></div>
+      </div>
+      <p class="note">These answers are simulated for the demo, written to show the kinds of errors sellers have reported. Hover a check to light up its evidence.</p>
+      <div class="qa" id="qa"></div>
+
+      <section class="panel case" aria-labelledby="hCase">
+        <div class="panel-head"><h2 id="hCase">Seller report, ready to send</h2><span class="eyebrow">Auto-drafted</span></div>
+        <p class="note">Amazon already tells sellers to flag wrong AI answers with thumbs-down and a Seller Support case. AnswerCheck finds the problems before a shopper does, then drafts that case with the evidence attached.</p>
+        <pre id="caseText"></pre>
+        <div class="row"><button class="secondary" type="button" id="copyCase">Copy report</button><span class="note" id="copyMsg" role="status"></span></div>
+      </section>
+    </div>
+  </div>
+
+  <div class="lower">
+    <section class="panel" aria-labelledby="hWhy">
+      <h2 id="hWhy">Why this matters</h2>
+      <div class="facts">
+        <div class="fact"><span class="big">300M+</span><p>customers had used Rufus, Amazon's AI shopping assistant, before it became Alexa for Shopping on May 13, 2026. It's now the default for signed-in US shoppers.</p><a href="https://canopymanagement.com/amazon-alexa-for-shopping-sellers-guide/" target="_blank" rel="noopener">Canopy Management, 2026</a></div>
+        <div class="fact"><span class="big">1 word</span><p>A coffee seller found the assistant listing “bitterness” as a positive attribute of their product, though bitterness was hardly ever mentioned in their reviews. A moderator escalated it by hand.</p><a href="https://sellercentral.amazon.com/seller-forums/discussions/t/7b947c81-e7ee-43dc-a024-a84e83458baa" target="_blank" rel="noopener">Amazon Seller Forums</a></div>
+        <div class="fact"><span class="big">No view</span><p>Seller guides report there is no dedicated Seller Central dashboard yet showing what the assistant says about a product. Sellers test it by hand, one question at a time.</p><a href="https://perpetua.io/blog-alexa-for-shopping-amazon-rufus-the-complete-guide-for-brands-and-sellers/" target="_blank" rel="noopener">Perpetua, 2026</a></div>
+        <div class="fact"><span class="big">24%</span><p>of consumers surveyed said they doubt AI shopping assistants' recommendation accuracy.</p><a href="https://www.thestreet.com/personal-finance/amazons-rufus-other-ai-shopping-assistants-face-consumers-concerns" target="_blank" rel="noopener">TheStreet, citing YouGov</a></div>
+      </div>
+    </section>
+    <section class="panel" aria-labelledby="hHow">
+      <h2 id="hHow">How it would run at Amazon scale</h2>
+      <ol class="steps">
+        <li><b>Sample the questions shoppers actually ask</b> about each product, and record the assistant's answers.</li>
+        <li><b>Split each answer into single claims</b> with a language model. This prototype uses rules so it runs in any browser.</li>
+        <li><b>Check every claim against retrieved evidence</b> (listing, specs, reviews) with an entailment model, tuned on a human-labeled set so “contradicted” means contradicted.</li>
+        <li><b>Show sellers a per-product accuracy view</b> in Seller Central, with the evidence and a one-click report.</li>
+        <li><b>Feed contradictions back</b> so the assistant cites evidence or says “the listing doesn't say” instead of guessing.</li>
+      </ol>
+    </section>
+  </div>
+
+  <footer>
+    <span>Products, brands, reviews and AI answers on this page are fictional, written to show how the checks work.</span>
+    <span>Built by Sravani Elavarthi with AI assistance · MS Data Science, University of Maryland</span>
+  </footer>
+</div>
+<script src="js/engine.js"></script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

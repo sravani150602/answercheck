@@ -1,0 +1,8 @@
+{
+  "name": "answercheck",
+  "version": "0.1.0",
+  "description": "Checks an AI shopping assistant's answers against a product's own listing, specs and reviews.",
+  "private": true,
+  "scripts": { "test": "node --test tests/engine.test.js" },
+  "license": "MIT"
+}
