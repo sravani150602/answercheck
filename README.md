@@ -107,19 +107,6 @@ docs/screenshots/   images in this README
 
 ---
 
-## About me
 
-**Sravani Elavarthi** · Software Engineer · Ashburn, VA
-
-Amazon has been my dream company for three years. After many applications and automated rejections, I decided to show you how I think instead of telling you: find a problem customers and sellers actually hit, check what already exists, and build something you can click.
-
-- **MS in Data Science**, University of Maryland, College Park (2024–2026), GPA 3.8/4.0. Teaching Assistant for Machine Learning, and earlier for Data Structures & Algorithms and Database Systems.
-- **Software Development Engineer**, Quadrant Technologies, on a Microsoft client project (2025–2026): Java/Spring Boot REST APIs, Redis caching, CI/CD with GitHub Actions.
-- **Graduate Research Assistant**, UMD Office of Research Administration (2024–2025): Python automation, SQL schemas, serverless cloud functions.
-- **Software Engineer**, Cognizant Technology Solutions (2023–2024): backend microservices in Java and Python with Docker and Kubernetes.
-- **Software Development Engineer Intern**, Wiley India (2023): backend APIs in Python and Java.
-- **AWS Certified Solutions Architect – Associate** and **AWS Certified Cloud Practitioner**.
-
-**Reach me:** [LinkedIn](https://linkedin.com/in/sravani-elavarthi) · [GitHub](https://github.com/sravani150602) · sravanireddy1506@gmail.com
 
 MIT License · © 2026 Sravani Elavarthi
